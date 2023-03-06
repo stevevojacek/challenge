@@ -104,43 +104,43 @@ resource "aws_security_group" "websg" {
     
 }
 #Primary Web Server Instance
-#resource "aws_instance" "web" {
-#    ami           = "ami-006dcf34c09e50022"
-#    instance_type = "t2.micro"
-#    subnet_id = aws_subnet.public.id
-#    vpc_security_group_ids = [aws_security_group.websg.id]
-#    associate_public_ip_address = true
-#    user_data     = <<EOF
-##!/bin/bash
-#yum -y update
-#yum -y install httpd
-#echo "<h2>Hello World - Webserver 1</h2><br>" > /var/www/html/index.html
-#service httpd start
-#chkconfig httpd on
-#EOF
-#    tags = {
-#        Name = "Web Server 1"
-#        Owner = "Steve"
-#    }
-#}
+resource "aws_instance" "web" {
+    ami           = "ami-006dcf34c09e50022"
+    instance_type = "t2.micro"
+    subnet_id = aws_subnet.public.id
+    vpc_security_group_ids = [aws_security_group.websg.id]
+    associate_public_ip_address = true
+    user_data     = <<EOF
+#!/bin/bash
+yum -y update
+yum -y install httpd
+echo "<h2>Hello World - Webserver 1</h2><br>" > /var/www/html/index.html
+service httpd start
+chkconfig httpd on
+EOF
+    tags = {
+        Name = "Web Server 1"
+        Owner = "Steve"
+    }
+}
 
 #Secondary Web Server Instance
-#resource "aws_instance" "web2" {
-#    ami           = "ami-006dcf34c09e50022"
-#    instance_type = "t2.micro"
-#    subnet_id = aws_subnet.public.id
-#    vpc_security_group_ids = [aws_security_group.websg.id]
-#    associate_public_ip_address = true
-#    user_data     = <<EOF
-##!/bin/bash
-#yum -y update
-#yum -y install httpd
-#echo "<h2>Hello World - Webserver 2</h2><br>" > /var/www/html/index.html
-#service httpd start
-#chkconfig httpd on
-#EOF
-#    tags = {
-#        Name = "Web Server 2"
-#        Owner = "Steve"
-#   }
-#}
+resource "aws_instance" "web2" {
+    ami           = "ami-006dcf34c09e50022"
+    instance_type = "t2.micro"
+    subnet_id = aws_subnet.public.id
+    vpc_security_group_ids = [aws_security_group.websg.id]
+    associate_public_ip_address = true
+    user_data     = <<EOF
+#!/bin/bash
+yum -y update
+yum -y install httpd
+echo "<h2>Hello World - Webserver 2</h2><br>" > /var/www/html/index.html
+service httpd start
+chkconfig httpd on
+EOF
+    tags = {
+        Name = "Web Server 2"
+        Owner = "Steve"
+   }
+}
