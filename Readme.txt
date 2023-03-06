@@ -26,6 +26,7 @@ Step 4:
  
 Procedure (How it is done):
 
+STEP1:
 1-First, I check that there is only one default VPN and no EC2 instances on my AWS account (Please see the attached images 001 and 002 on the IMAGES dir)
 2-Add the Provider (aws) section to the file main.tf
 3-Add the "Main VPC" for the project (ChallengeVPC)
@@ -41,15 +42,20 @@ Procedure (How it is done):
 #terraform plan   (I check that all the changes to be applied to AWS are correct, and then proceed) 
 #terraform apply
 
-(The VPC, networking, NAT, routes and the EC2 instance/web server are created)
+(..The VPC, networking, NAT, routes and the EC2 instance/web server are created)
 I go to the EC2 instance page on AWS web console, copy the Internet IP address, paste it on a web client on my side and check that the web server is up and running (Please see the attached image 003a/b and 004)
+
+STEP2:
 12-I destroy everything, with #terraform destroy
+
+STEP3:
 13-Add the secondary EC2 instance, as the secondary web server, with the same config than the first one, but with the text "Hello World - Server 2" message on their web server
 14-After modify the main.tf file on terraform, I execute:
 #terraform plan   (I check that all the changes to be applied to AWS are correct, and then proceed) 
 #terraform apply
 
-(The secondary EC2 instance is created)
+(..The secondary EC2 instance is created)
 -I go to the EC2 instance page on AWS console, copy the Internet IP address of both instances, paste it on a web client on my side and check that the web servers are up and running (Please see the attached images 005, 006, 007 and 008)
 
+STEP4:
 15-Finally, everything is deleted again, with #terraform destroy
