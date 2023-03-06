@@ -1,2 +1,0 @@
-# challenge
-Steve Devops challenge
